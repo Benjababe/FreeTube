@@ -25,11 +25,11 @@ import {
 import {
   getLocalChannel,
   getLocalChannelId,
-  localCheckVerified,
   parseLocalChannelShorts,
   parseLocalChannelVideos,
   parseLocalCommunityPost,
   parseLocalListPlaylist,
+  parseLocalVerified,
   parseLocalListVideo,
   parseLocalSubscriberCount
 } from '../../helpers/api/local'
@@ -149,11 +149,11 @@ export default defineComponent({
       return this.$store.getters.getBackendFallback
     },
 
-    hideUnsubscribeButton: function() {
+    hideUnsubscribeButton: function () {
       return this.$store.getters.getHideUnsubscribeButton
     },
 
-    showFamilyFriendlyOnly: function() {
+    showFamilyFriendlyOnly: function () {
       return this.$store.getters.getShowFamilyFriendlyOnly
     },
 
@@ -242,19 +242,19 @@ export default defineComponent({
       return this.$store.getters.getHideLiveStreams
     },
 
-    hideChannelPodcasts: function() {
+    hideChannelPodcasts: function () {
       return this.$store.getters.getHideChannelPodcasts
     },
 
-    hideChannelReleases: function() {
+    hideChannelReleases: function () {
       return this.$store.getters.getHideChannelReleases
     },
 
-    hideChannelPlaylists: function() {
+    hideChannelPlaylists: function () {
       return this.$store.getters.getHideChannelPlaylists
     },
 
-    hideChannelCommunity: function() {
+    hideChannelCommunity: function () {
       return this.$store.getters.getHideChannelCommunity
     },
 
@@ -363,7 +363,7 @@ export default defineComponent({
       }
     },
 
-    videoSortBy () {
+    videoSortBy() {
       if (!this.autoRefreshOnSortByChangeEnabled) { return }
 
       this.isElementListLoading = true
@@ -397,7 +397,7 @@ export default defineComponent({
       }
     },
 
-    liveSortBy () {
+    liveSortBy() {
       if (!this.autoRefreshOnSortByChangeEnabled) { return }
 
       this.isElementListLoading = true
@@ -414,7 +414,7 @@ export default defineComponent({
       }
     },
 
-    playlistSortBy () {
+    playlistSortBy() {
       if (!this.autoRefreshOnSortByChangeEnabled) { return }
 
       this.isElementListLoading = true
@@ -553,7 +553,7 @@ export default defineComponent({
 
             channelId = header.author.id
             channelName = header.author.name
-            channelVerified = localCheckVerified(header.author)
+            channelVerified = parseLocalVerified(header.author)
             channelThumbnailUrl = header.author.best_thumbnail.url
             subscriberText = header.subscribers?.text
             break
@@ -1382,7 +1382,7 @@ export default defineComponent({
       }
     },
 
-    channelInvidiousReleases: function() {
+    channelInvidiousReleases: function () {
       this.isElementListLoading = true
       const payload = {
         resource: 'channels',
@@ -1495,7 +1495,7 @@ export default defineComponent({
       }
     },
 
-    channelInvidiousPodcasts: function() {
+    channelInvidiousPodcasts: function () {
       this.isElementListLoading = true
       const payload = {
         resource: 'channels',
@@ -1625,7 +1625,7 @@ export default defineComponent({
       }
     },
 
-    getCommunityPostsInvidious: function() {
+    getCommunityPostsInvidious: function () {
       const more = !isNullOrEmpty(this.communityContinuationData)
 
       invidiousGetCommunityPosts(this.id, this.communityContinuationData).then(({ posts, continuation }) => {

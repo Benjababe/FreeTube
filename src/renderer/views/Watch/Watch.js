@@ -24,10 +24,10 @@ import {
 import {
   filterLocalFormats,
   getLocalVideoInfo,
-  localCheckVerified,
   mapLocalFormat,
   parseLocalSubscriberCount,
   parseLocalTextRuns,
+  parseLocalVerified,
   parseLocalWatchNextVideo
 } from '../../helpers/api/local'
 import { filterInvidiousFormats, invidiousGetVideoInformation, youtubeImageUrlToInvidious } from '../../helpers/api/invidious'
@@ -302,7 +302,7 @@ export default defineComponent({
 
         this.channelId = result.basic_info.channel_id
         this.channelName = result.basic_info.author
-        this.channelVerified = localCheckVerified(result.secondary_info.owner.author)
+        this.channelVerified = parseLocalVerified(result.secondary_info.owner.author)
 
         if (result.secondary_info.owner?.author) {
           this.channelThumbnail = result.secondary_info.owner.author.best_thumbnail?.url ?? ''

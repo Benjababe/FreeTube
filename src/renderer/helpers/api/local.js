@@ -404,12 +404,12 @@ export function parseLocalListPlaylist(playlist, author = undefined) {
     } else {
       channelName = playlist.author.name
       channelId = playlist.author.id
-      channelVerified = localCheckVerified(playlist.author)
+      channelVerified = parseLocalVerified(playlist.author)
     }
   } else {
     channelName = author.name
     channelId = author.id
-    channelVerified = localCheckVerified(author)
+    channelVerified = parseLocalVerified(author)
   }
 
   return {
@@ -530,7 +530,7 @@ export function parseLocalListVideo(video) {
     title: video.title.text,
     author: video.author.name,
     authorId: video.author.id,
-    authorVerified: localCheckVerified(video.author),
+    authorVerified: parseLocalVerified(video.author),
     description: video.description,
     viewCount: extractNumberFromString(video.view_count.text),
     publishedText: video.published.isEmpty() ? null : video.published.text,
@@ -579,7 +579,7 @@ function parseListItem(item) {
         thumbnail: channel.author.best_thumbnail?.url,
         name: channel.author.name,
         id: channel.author.id,
-        verified: localCheckVerified(channel.author),
+        verified: parseLocalVerified(channel.author),
         subscribers,
         videos,
         handle,
@@ -613,7 +613,7 @@ export function parseLocalWatchNextVideo(video) {
     title: video.title.text,
     author: video.author.name,
     authorId: video.author.id,
-    authorVerified: localCheckVerified(video.author),
+    authorVerified: parseLocalVerified(video.author),
     viewCount: extractNumberFromString(video.view_count.text),
     publishedText: video.published.isEmpty() ? null : video.published.text,
     lengthSeconds: isNaN(video.duration.seconds) ? '' : video.duration.seconds,
@@ -970,6 +970,6 @@ export async function getHashtagLocal(hashtag) {
  * Checks whether user is verified on YouTube
  * @param {import('youtubei.js').Misc.Author} author
  */
-export function localCheckVerified(author) {
+export function parseLocalVerified(author) {
   return author.is_verified || author.is_verified_artist
 }
