@@ -40,13 +40,20 @@
         </h3>
       </router-link>
       <div class="infoLine">
-        <router-link
-          v-if="channelId"
-          class="channelName"
-          :to="`/channel/${channelId}`"
-        >
-          {{ channelName }}
-        </router-link>
+        <template v-if="channelId">
+          <router-link
+            class="channelName"
+            :to="`/channel/${channelId}`"
+          >
+            {{ channelName }}
+          </router-link>
+          <font-awesome-icon
+            v-if="channelVerified"
+            :icon="['fas', 'check-circle']"
+            :title="$t('Video.Verified')"
+            class="channelVerified"
+          />
+        </template>
         <span
           v-else
           class="channelName"

@@ -8,7 +8,7 @@ import {
   escapeHTML,
   extractNumberFromString,
   getUserDataPath,
-  toLocalePublicationString
+  toLocalePublicationString,
 } from '../utils'
 
 const TRACKING_PARAM_NAMES = [
@@ -391,6 +391,7 @@ function parseShortDuration(accessibilityLabel, videoId) {
 export function parseLocalListPlaylist(playlist, author = undefined) {
   let channelName
   let channelId = null
+  let channelVerified = false
   /** @type {import('youtubei.js').YTNodes.PlaylistVideoThumbnail} */
   const thumbnailRenderer = playlist.thumbnail_renderer
   if (playlist.author && playlist.author.id !== 'N/A') {
@@ -403,10 +404,12 @@ export function parseLocalListPlaylist(playlist, author = undefined) {
     } else {
       channelName = playlist.author.name
       channelId = playlist.author.id
+      channelVerified = checkVerified(playlist.author)
     }
   } else {
     channelName = author.name
     channelId = author.id
+    channelVerified = checkVerified(author)
   }
 
   return {
@@ -416,6 +419,7 @@ export function parseLocalListPlaylist(playlist, author = undefined) {
     thumbnail: thumbnailRenderer ? thumbnailRenderer.thumbnail[0].url : playlist.thumbnails[0].url,
     channelName,
     channelId,
+    channelVerified,
     playlistId: playlist.id,
     videoCount: extractNumberFromString(playlist.video_count.text)
   }
@@ -526,6 +530,7 @@ export function parseLocalListVideo(video) {
     title: video.title.text,
     author: video.author.name,
     authorId: video.author.id,
+    authorVerified: checkVerified(video.author),
     description: video.description,
     viewCount: extractNumberFromString(video.view_count.text),
     publishedText: video.published.isEmpty() ? null : video.published.text,
@@ -957,4 +962,8 @@ function parseLocalAttachment(attachment) {
 export async function getHashtagLocal(hashtag) {
   const innertube = await createInnertube()
   return await innertube.getHashtag(hashtag)
+}
+
+export function checkVerified(obj) {
+  return obj.is_verified || obj.is_verified_artist
 }

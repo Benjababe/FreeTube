@@ -24,6 +24,7 @@ export default defineComponent({
       title: 'Pop Music Playlist - Timeless Pop Songs (Updated Weekly 2020)',
       thumbnail: 'https://i.ytimg.com/vi/JGwWNGJdvx8/mqdefault.jpg',
       channelName: '#RedMusic: Just Hits',
+      channelVerified: false,
       videoCount: 200,
     }
   },
@@ -86,6 +87,7 @@ export default defineComponent({
       }
       this.channelName = this.data.author
       this.channelId = this.data.authorId
+      this.channelVerified = this.data.authorVerified
       this.playlistId = this.data.playlistId
       this.videoCount = this.data.videoCount
 
@@ -103,6 +105,7 @@ export default defineComponent({
       }
       this.channelName = this.data.channelName
       this.channelId = this.data.channelId
+      this.channelVerified = this.data.channelVerified
       this.playlistId = this.data.playlistId
       this.videoCount = this.data.videoCount
     },
