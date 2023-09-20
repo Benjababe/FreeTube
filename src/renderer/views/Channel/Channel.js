@@ -25,6 +25,7 @@ import {
 import {
   getLocalChannel,
   getLocalChannelId,
+  localCheckVerified,
   parseLocalChannelShorts,
   parseLocalChannelVideos,
   parseLocalCommunityPost,
@@ -60,6 +61,7 @@ export default defineComponent({
       /** @type {import('youtubei.js').YT.Channel|null} */
       channelInstance: null,
       channelName: '',
+      channelVerified: false,
       bannerUrl: '',
       thumbnailUrl: '',
       subCount: 0,
@@ -506,6 +508,7 @@ export default defineComponent({
         }
 
         let channelName
+        let channelVerified
         let channelThumbnailUrl
 
         if (channel.alert) {
@@ -550,6 +553,7 @@ export default defineComponent({
 
             channelId = header.author.id
             channelName = header.author.name
+            channelVerified = localCheckVerified(header.author)
             channelThumbnailUrl = header.author.best_thumbnail.url
             subscriberText = header.subscribers?.text
             break
@@ -617,6 +621,7 @@ export default defineComponent({
         }
 
         this.channelName = channelName
+        this.channelVerified = channelVerified
         this.thumbnailUrl = channelThumbnailUrl
         this.isFamilyFriendly = !!channel.metadata.is_family_safe
 
@@ -957,6 +962,7 @@ export default defineComponent({
         const channelName = response.author
         const channelId = response.authorId
         this.channelName = channelName
+        this.channelVerified = response.authorVerified ?? false
         document.title = `${this.channelName} - ${packageDetails.productName}`
         this.id = channelId
         this.isFamilyFriendly = response.isFamilyFriendly

@@ -404,12 +404,12 @@ export function parseLocalListPlaylist(playlist, author = undefined) {
     } else {
       channelName = playlist.author.name
       channelId = playlist.author.id
-      channelVerified = checkVerified(playlist.author)
+      channelVerified = localCheckVerified(playlist.author)
     }
   } else {
     channelName = author.name
     channelId = author.id
-    channelVerified = checkVerified(author)
+    channelVerified = localCheckVerified(author)
   }
 
   return {
@@ -530,7 +530,7 @@ export function parseLocalListVideo(video) {
     title: video.title.text,
     author: video.author.name,
     authorId: video.author.id,
-    authorVerified: checkVerified(video.author),
+    authorVerified: localCheckVerified(video.author),
     description: video.description,
     viewCount: extractNumberFromString(video.view_count.text),
     publishedText: video.published.isEmpty() ? null : video.published.text,
@@ -964,6 +964,10 @@ export async function getHashtagLocal(hashtag) {
   return await innertube.getHashtag(hashtag)
 }
 
-export function checkVerified(obj) {
-  return obj.is_verified || obj.is_verified_artist
+/**
+ * Checks whether user is verified on YouTube
+ * @param {import('youtubei.js').Misc.Author} author
+ */
+export function localCheckVerified(author) {
+  return author.is_verified || author.is_verified_artist
 }

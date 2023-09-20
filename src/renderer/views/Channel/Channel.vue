@@ -42,11 +42,19 @@
             <div
               class="channelLineContainer"
             >
-              <h1
-                class="channelName"
-              >
-                {{ channelName }}
-              </h1>
+              <div>
+                <h1
+                  class="channelName"
+                >
+                  {{ channelName }}
+                </h1>
+                <font-awesome-icon
+                  v-if="channelVerified"
+                  :icon="['fas', 'check-circle']"
+                  :title="$t('Video.Verified')"
+                  class="channelVerified"
+                />
+              </div>
 
               <p
                 v-if="subCount !== null && !hideChannelSubscriptions"
