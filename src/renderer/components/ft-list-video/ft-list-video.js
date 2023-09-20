@@ -8,7 +8,7 @@ import {
   openExternalLink,
   showToast,
   toLocalePublicationString,
-  toDistractionFreeTitle
+  toDistractionFreeTitle,
 } from '../../helpers/utils'
 import { deArrowData } from '../../helpers/sponsorblock'
 
@@ -61,6 +61,7 @@ export default defineComponent({
       title: '',
       channelName: null,
       channelId: null,
+      channelVerified: false,
       viewCount: 0,
       parsedViewCount: '',
       uploadedTime: '',
@@ -72,7 +73,7 @@ export default defineComponent({
       isLive: false,
       isUpcoming: false,
       isPremium: false,
-      hideViews: false
+      hideViews: false,
     }
   },
   computed: {
@@ -450,6 +451,7 @@ export default defineComponent({
 
       this.channelName = this.data.author ?? null
       this.channelId = this.data.authorId ?? null
+      this.channelVerified = this.data.authorVerified ?? false
 
       if (this.data.isRSS && this.historyIndex !== -1) {
         this.duration = formatDurationAsTimestamp(this.historyCache[this.historyIndex].lengthSeconds)

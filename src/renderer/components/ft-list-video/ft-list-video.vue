@@ -89,6 +89,12 @@
         >
           <span>{{ channelName }}</span>
         </router-link>
+        <font-awesome-icon
+          v-if="channelVerified"
+          :icon="['fas', 'check-circle']"
+          :title="$t('Video.Verified')"
+          class="channelVerified"
+        />
         <template v-if="!isLive && !isUpcoming && !isPremium && !hideViews">
           <span class="viewCount"><template v-if="channelId !== null"> •</template> {{ parsedViewCount }} </span>
           <span v-if="viewCount === 1">{{ $t("Video.View").toLowerCase() }}</span>
