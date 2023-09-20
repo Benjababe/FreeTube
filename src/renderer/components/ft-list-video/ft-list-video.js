@@ -596,6 +596,7 @@ export default defineComponent({
         title: this.title,
         author: this.channelName,
         authorId: this.channelId,
+        authorVerified: this.channelVerified,
         published: '',
         description: this.description,
         viewCount: this.viewCount,
