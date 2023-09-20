@@ -553,7 +553,7 @@ export default defineComponent({
 
             channelId = header.author.id
             channelName = header.author.name
-            channelVerified = parseLocalVerified(header.author)
+            channelVerified = localCheckVerified(header.author)
             channelThumbnailUrl = header.author.best_thumbnail.url
             subscriberText = header.subscribers?.text
             break
