@@ -217,6 +217,8 @@ $watched-transition-duration: 0.5s;
     .title {
       @include low-contrast-when-watched(var(--primary-text-color));
 
+      display: flex;
+      align-items: center;
       font-size: 20px;
       grid-area: title;
       text-decoration: none;
@@ -225,6 +227,14 @@ $watched-transition-duration: 0.5s;
 
       @include is-sidebar-item {
         font-size: 15px;
+      }
+
+      .channelVerified {
+        height: 14px;
+        width: 14px;
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+        vertical-align: middle;
       }
     }
 
@@ -248,8 +258,8 @@ $watched-transition-duration: 0.5s;
       }
 
       .channelVerified {
-        height: 14px;
-        width: 14px;
+        height: 12px;
+        width: 12px;
         margin-left: 0.25em;
         margin-right: 0.25em;
         vertical-align: middle;

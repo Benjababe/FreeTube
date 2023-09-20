@@ -19,6 +19,7 @@ export default defineComponent({
       id: '',
       thumbnail: '',
       channelName: '',
+      channelVerified: false,
       subscriberCount: 0,
       videoCount: '',
       handle: null,
@@ -52,6 +53,7 @@ export default defineComponent({
       }
 
       this.channelName = this.data.name
+      this.channelVerified = this.data.verified
       this.id = this.data.id
       this.subscriberCount = this.data.subscribers != null ? this.data.subscribers.replace(/ subscriber(s)?/, '') : null
 
@@ -75,6 +77,7 @@ export default defineComponent({
       this.thumbnail = youtubeImageUrlToInvidious(thumbnailUrl, this.currentInvidiousInstance)
 
       this.channelName = this.data.author
+      this.channelVerified = this.data.authorVerified
       this.id = this.data.authorId
       this.subscriberCount = formatNumber(this.data.subCount)
       this.videoCount = formatNumber(this.data.videoCount)

@@ -579,6 +579,7 @@ function parseListItem(item) {
         thumbnail: channel.author.best_thumbnail?.url,
         name: channel.author.name,
         id: channel.author.id,
+        verified: localCheckVerified(channel.author),
         subscribers,
         videos,
         handle,

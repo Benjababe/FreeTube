@@ -28,6 +28,12 @@
         <h3 class="h3Title">
           {{ channelName }}
         </h3>
+        <font-awesome-icon
+          v-if="channelVerified"
+          :icon="['fas', 'check-circle']"
+          :title="$t('Video.Verified')"
+          class="channelVerified"
+        />
       </router-link>
       <div class="infoLine">
         <span
