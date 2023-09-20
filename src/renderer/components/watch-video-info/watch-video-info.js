@@ -31,6 +31,10 @@ export default defineComponent({
       type: String,
       required: true
     },
+    channelVerified: {
+      type: Boolean,
+      required: true
+    },
     channelThumbnail: {
       type: String,
       required: true
@@ -311,6 +315,7 @@ export default defineComponent({
         title: this.title,
         author: this.channelName,
         authorId: this.channelId,
+        authorVerified: this.channelVerified,
         published: '',
         description: this.description,
         viewCount: this.viewCount,

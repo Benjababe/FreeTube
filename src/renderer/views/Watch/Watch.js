@@ -24,6 +24,7 @@ import {
 import {
   filterLocalFormats,
   getLocalVideoInfo,
+  localCheckVerified,
   mapLocalFormat,
   parseLocalSubscriberCount,
   parseLocalTextRuns,
@@ -96,6 +97,7 @@ export default defineComponent({
       videoChapters: [],
       videoCurrentChapterIndex: 0,
       channelName: '',
+      channelVerified: false,
       channelThumbnail: '',
       channelId: '',
       channelSubscriptionCountText: '',
@@ -300,6 +302,7 @@ export default defineComponent({
 
         this.channelId = result.basic_info.channel_id
         this.channelName = result.basic_info.author
+        this.channelVerified = localCheckVerified(result.secondary_info.owner.author)
 
         if (result.secondary_info.owner?.author) {
           this.channelThumbnail = result.secondary_info.owner.author.best_thumbnail?.url ?? ''

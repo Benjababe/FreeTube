@@ -31,14 +31,26 @@
     width: 56px;
   }
 
+  .channelNameContainer {
+    display: flex;
+    align-items: center;
+  }
+
   .channelName {
     color: inherit;
     cursor: pointer;
-    display: block;
     margin-inline-start: 6px;
     position: relative;
     text-decoration: inherit;
     inset-block-start: -2px;
+  }
+
+  .channelVerified {
+    height: 14px;
+    width: 14px;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    vertical-align: middle;
   }
 
   .subscribeButton {

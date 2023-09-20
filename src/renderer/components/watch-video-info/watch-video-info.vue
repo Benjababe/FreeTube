@@ -24,12 +24,20 @@
             </router-link>
           </div>
           <div>
-            <router-link
-              :to="`/channel/${channelId}`"
-              class="channelName"
-            >
-              {{ channelName }}
-            </router-link>
+            <div class="channelNameContainer">
+              <router-link
+                :to="`/channel/${channelId}`"
+                class="channelName"
+              >
+                {{ channelName }}
+              </router-link>
+              <font-awesome-icon
+                v-if="channelVerified"
+                :icon="['fas', 'check-circle']"
+                :title="$t('Video.Verified')"
+                class="channelVerified"
+              />
+            </div>
             <ft-subscribe-button
               v-if="!hideUnsubscribeButton"
               :channel-id="channelId"

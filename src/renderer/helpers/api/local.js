@@ -613,6 +613,7 @@ export function parseLocalWatchNextVideo(video) {
     title: video.title.text,
     author: video.author.name,
     authorId: video.author.id,
+    authorVerified: localCheckVerified(video.author),
     viewCount: extractNumberFromString(video.view_count.text),
     publishedText: video.published.isEmpty() ? null : video.published.text,
     lengthSeconds: isNaN(video.duration.seconds) ? '' : video.duration.seconds,

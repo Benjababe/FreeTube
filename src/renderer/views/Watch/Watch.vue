@@ -101,6 +101,7 @@
         :title="videoTitle"
         :channel-id="channelId"
         :channel-name="channelName"
+        :channel-verified="channelVerified"
         :channel-thumbnail="channelThumbnail"
         :published="videoPublished"
         :subscription-count-text="channelSubscriptionCountText"
