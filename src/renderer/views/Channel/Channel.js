@@ -25,11 +25,11 @@ import {
 import {
   getLocalChannel,
   getLocalChannelId,
+  parseLocalAuthorVerified,
   parseLocalChannelShorts,
   parseLocalChannelVideos,
   parseLocalCommunityPost,
   parseLocalListPlaylist,
-  parseLocalVerified,
   parseLocalListVideo,
   parseLocalSubscriberCount
 } from '../../helpers/api/local'
@@ -553,7 +553,7 @@ export default defineComponent({
 
             channelId = header.author.id
             channelName = header.author.name
-            channelVerified = localCheckVerified(header.author)
+            channelVerified = parseLocalAuthorVerified(header.author)
             channelThumbnailUrl = header.author.best_thumbnail.url
             subscriberText = header.subscribers?.text
             break
