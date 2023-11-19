@@ -36,10 +36,14 @@ Global:
   Videos: 'Myndskeið'
   Shorts: Stuttmyndir
   Live: Í beinni
+  Community: Samfélag
 
   Counts:
     Video Count: 1 myndskeið | {count} myndskeið
     Channel Count: 1 rás | {count} rásir
+    Subscriber Count: 1 áskrifandi | {count} áskrifendur
+    View Count: 1 áhorf | {count} áhorf
+    Watching Count: 1 að horfa | {count} að horfa
 Version {versionNumber} is now available!  Click for more details: 'Útgáfa {versionNumber}
   er tiltæk!  Smelltu til að skoða nánar'
 Download From Site: 'Sækja af vefsvæði'
@@ -105,6 +109,8 @@ Subscriptions:
   Subscriptions Tabs: Áskriftaflipar
   All Subscription Tabs Hidden: Allir áskriftaflipar eru faldir. Til að sjá efni hér,
     skaltu gera einhverja flipa sýnilega í "{subsection}" hlutanum í "{settingsSection}".
+  Load More Posts: Hlaða inn fleiri færslum
+  Empty Posts: Rásirnar sem þú ert áskrifandi að eru ekki með neinar færslur.
 More: 'Meira'
 Trending:
   Trending: 'Í umræðunni'
@@ -363,6 +369,7 @@ Settings:
     Hide Subscriptions Videos: Fela myndskeið áskrifta
     Blur Thumbnails: Móska smámyndir
     Hide Profile Pictures in Comments: Fela auðkennismyndir í athugasemdum
+    Hide Subscriptions Community: Fela samfélag áskrifenda
   Data Settings:
     Data Settings: 'Stillingar gagna'
     Select Import Type: 'Veldu tegund innflutnings'
@@ -554,8 +561,6 @@ Profile:
   Profile Settings: Stillingar notkunarsniðs
   Toggle Profile List: Víxla lista með notkunarsniðum af/á
 Channel:
-  Subscriber: 'Áskrifandi'
-  Subscribers: 'Áskrifendur'
   Subscribe: 'Gerast áskrifandi'
   Unsubscribe: 'Segja upp áskrift'
   Channel has been removed from your subscriptions: 'Rás var fjarlægð úr áskriftunum
@@ -601,7 +606,6 @@ Channel:
     This channel does not currently have any live streams: Þessi rás er í augnablikinu
       ekki með nein bein streymi
   Community:
-    Community: Samfélag
     This channel currently does not have any posts: Þessi rás er ekki með neinar færslur
     Reveal Answers: Birta svör
     Hide Answers: Fela svör
@@ -637,15 +641,12 @@ Video:
   Copy YouTube Channel Link: 'Afrita tengil YouTube-rásar'
   Open Channel in Invidious: 'Opna rás í Invidious'
   Copy Invidious Channel Link: 'Afrita tengil Invidious-rásar'
-  View: 'Áhorf'
   Views: 'Áhorf'
   Loop Playlist: 'Endurtaka spilunarlista endalaust'
   Shuffle Playlist: 'Stokka spilunarlista'
   Reverse Playlist: 'Snúa við spilunarlista'
   Play Next Video: 'Spila næsta myndskeið'
   Play Previous Video: 'Spila fyrra myndskeið'
-  # Context is "X People Watching"
-  Watching: 'Verið að horfa'
   Watched: 'Búið að horfa'
   Autoplay: 'Spila sjálfkrafa'
   Starting soon, please refresh the page to check again: 'Byrjar bráðum, endurlestu
@@ -838,6 +839,7 @@ Comments:
   Member: Meðlimur
   View {replyCount} replies: Skoða {replyCount} svör
   Hearted: Líkað
+  Subscribed: Áskrifandi
 Up Next: 'Næst í spilun'
 
 #Tooltips

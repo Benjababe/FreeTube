@@ -28,7 +28,7 @@
     border-radius: 50%;
     cursor: pointer;
     margin-inline-end: 10px;
-    width: 56px;
+    inline-size: 56px;
   }
 
   .channelNameContainer {
@@ -46,10 +46,10 @@
   }
 
   .channelVerified {
-    height: 14px;
-    width: 14px;
-    margin-left: 0.25em;
-    margin-right: 0.25em;
+    block-size: 14px;
+    inline-size: 14px;
+    margin-inline: 0.25em;
+    margin-inline-end: 0.25em;
     vertical-align: middle;
   }
 
@@ -78,7 +78,8 @@
 }
 
 .datePublished {
-  margin: 4px 0 0;
+  margin-block: 4px 0;
+  margin-inline: 0;
 
   @media screen and (max-width: 680px) {
     margin-block-start: 16px;
@@ -92,7 +93,7 @@
   font-size: 16px;
   margin-inline-start: auto;
   margin-block-start: 4px;
-  max-width: 210px;
+  max-inline-size: 210px;
   text-align: end;
 
   @media screen and (max-width: 680px) {
@@ -102,7 +103,7 @@
 
   .likeBar {
     border-radius: 4px;
-    height: 8px;
+    block-size: 8px;
     margin-block-end: 4px;
   }
 

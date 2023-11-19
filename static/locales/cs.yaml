@@ -35,10 +35,14 @@ Global:
   Videos: 'Videa'
   Shorts: Shorts
   Live: Živě
+  Community: Komunita
 
   Counts:
     Video Count: 1 video | {count} videí
     Channel Count: 1 kanál | {count} kanálů
+    Subscriber Count: 1 odběratel | {count} odběratelů
+    View Count: 1 zhlédnutí | {count} zhlédnutí
+    Watching Count: 1 sledující | {count} sledujících
 Version {versionNumber} is now available!  Click for more details: 'Verze {versionNumber}
   je k dispozici! Klikněte pro více informací'
 Download From Site: 'Stáhnout ze stránky'
@@ -103,6 +107,8 @@ Subscriptions:
   All Subscription Tabs Hidden: Všechny karty předplatného jsou skryté. Chcete-li
     zde zobrazit obsah, zrušte prosím skrytí některých záložek v sekci „{subsection}“
     v „{settingsSection}“.
+  Load More Posts: Načíst další příspěvky
+  Empty Posts: Vaše odebírané kanály momentálně nemají žádné příspěvky.
 Trending:
   Trending: 'Trendy'
   Trending Tabs: Tabulka trendů
@@ -160,6 +166,7 @@ Settings:
       Middle: 'Střed'
       End: 'Konec'
       Hidden: Skryté
+      Blur: Rozmazané
     'Invidious Instance (Default is https://invidious.snopyta.org)': 'Instance Invidious
       (Výchozí je https://invidious.snopyta.org)'
     Region for Trending: 'Oblast pro trendy'
@@ -173,7 +180,7 @@ Settings:
       instance
     Current Invidious Instance: Současná instance Invidious
     No default instance has been set: Není nastavena žádná výchozí instance
-    The currently set default instance is {instance}: Současné výchozí instance je
+    The currently set default instance is {instance}: Aktuální výchozí instance je
       {instance}
     External Link Handling:
       No Action: Žádná akce
@@ -339,7 +346,7 @@ Settings:
     Hide Chapters: Skrýt kapitoly
     Hide Upcoming Premieres: Skrýt nadcházející premiéry
     Hide Channels: Skrýt videa z kanálů
-    Hide Channels Placeholder: Název nebo ID kanálu
+    Hide Channels Placeholder: ID kanálu
     Display Titles Without Excessive Capitalisation: Zobrazit názvy bez nadměrného
       použití velkých písmen
     Hide Featured Channels: Skrýt doporučené kanály
@@ -359,6 +366,13 @@ Settings:
     Hide Subscriptions Live: Skrýt živá vysílání odběrů
     Hide Profile Pictures in Comments: Skrýt profilové obrázky v komentářích
     Blur Thumbnails: Rozmazat náhledy
+    Hide Subscriptions Community: Skrýt komunitu odběratelů
+    Hide Channels Invalid: Zadané ID kanálu je neplatné
+    Hide Channels Disabled Message: Některé kanály byly zablokovány pomocí ID a nebyly
+      zpracovány. Při aktualizaci těchto ID je funkce zablokována
+    Hide Channels Already Exists: ID kanálu již existuje
+    Hide Channels API Error: Chyba při načítání uživatele se zadaným ID. Zkontrolujte
+      prosím, zda je zadané ID správné.
   Data Settings:
     Data Settings: 'Nastavení dat'
     Select Import Type: 'Vybrat typ importu'
@@ -579,7 +593,7 @@ Profile:
   Your default profile has been changed to your primary profile: 'Váš výchozí profil
     byl změněn na primární profil'
   '{profile} is now the active profile': '{profile} je nyní aktivním profilem'
-  Subscription List: 'List odebíraných kanálů'
+  Subscription List: 'Seznam odebíraných kanálů'
   Other Channels: 'Ostatní kanály'
   '{number} selected': '{number} vybrán'
   Select All: 'Vybrat vše'
@@ -599,8 +613,6 @@ Profile:
   Profile Settings: Nastavení profilu
   Toggle Profile List: Přepnout seznam profilů
 Channel:
-  Subscriber: 'Odběratel'
-  Subscribers: 'odběratelů'
   Subscribe: 'Odebírat'
   Unsubscribe: 'Zrušit odběr'
   Channel has been removed from your subscriptions: 'Kanál byl odebrán z vašich odběrů'
@@ -641,7 +653,6 @@ Channel:
   This channel does not allow searching: Tento kanál neumožňuje vyhledávání
   Channel Tabs: Karty kanálů
   Community:
-    Community: Komunita
     This channel currently does not have any posts: Tento kanál v současné době nemá
       žádné příspěvky
     Hide Answers: Skrýt odpovědi
@@ -676,15 +687,12 @@ Video:
   Copy YouTube Channel Link: 'Kopírovat odkaz kanálu YouTube'
   Open Channel in Invidious: 'Otevřít kanál v Invidious'
   Copy Invidious Channel Link: 'Kopírovat odkaz Invidious kanálu'
-  View: 'Zhlédnutí'
   Views: 'Zhlédnutí'
   Loop Playlist: 'Smyčka playlistu'
   Shuffle Playlist: 'Zamíchat playlist'
   Reverse Playlist: 'Obrátit playlist'
   Play Next Video: 'Přehrát další video'
   Play Previous Video: 'Přehrát předchozí video'
-  # Context is "X People Watching"
-  Watching: 'Sledujících'
   Watched: 'Zhlédnuto'
   Autoplay: 'Automatické přehrávání'
   Starting soon, please refresh the page to check again: 'Začínáme brzy, obnovte prosím
@@ -875,6 +883,7 @@ Comments:
   Member: Člen
   View {replyCount} replies: Zobrazit {replyCount} odpovědí
   Hearted: Se srdíčkem
+  Subscribed: Odebíráno
 Up Next: 'Další'
 
 #Tooltips
@@ -943,10 +952,9 @@ Tooltips:
     Replace HTTP Cache: Zakáže mezipaměť HTTP Electronu a povolí vlastní paměťovou
       mezipaměť pro obrázky v paměti. Povede to ke zvýšenému využití RAM.
   Distraction Free Settings:
-    Hide Channels: Zadejte název nebo ID kanálu pro skrytí všech videí, playlistů
-      a samotného kanálu před zobrazením ve vyhledávání, trendech, nejpopulárnějších
-      a doporučených. Zadaný název kanálu se musí zcela shodovat a rozlišují se v
-      něm velká a malá písmena.
+    Hide Channels: Zadejte ID kanálu pro skrytí všech videí, playlistů a samotného
+      kanálu před zobrazením ve vyhledávání, trendech, nejpopulárnějších a doporučených.
+      Zadané ID kanálu se musí zcela shodovat a rozlišují se v něm velká a malá písmena.
     Hide Subscriptions Live: Toto nastavení je nadřazeno nastavením celé aplikace
       „{appWideSetting}“ v části „{subsection}“ v části „{settingsSection}“
   SponsorBlock Settings:

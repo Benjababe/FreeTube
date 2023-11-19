@@ -36,11 +36,15 @@ Global:
   Videos: 'Vídeos'
   Shorts: Cortos
   Live: En directo
+  Community: Comunidad
 
 # Search Bar
   Counts:
     Video Count: 1 vídeo | {count} vídeos
     Channel Count: 1 canal | {count} canales
+    Subscriber Count: 1 suscriptor | {count} suscriptores
+    View Count: 1 vista | {count} vistas
+    Watching Count: 1 espectador | {count} espectadores
 Search / Go to URL: 'Buscar / Ir a la dirección'
   # In Filter Button
 Search Filters:
@@ -98,6 +102,8 @@ Subscriptions:
   All Subscription Tabs Hidden: Todas las pestañas de las suscripciones están ocultas.
     Para ver el contenido, por favor, desoculta algunas pestañas en la sección «{subsection}»
     en «{settingsSection}».
+  Load More Posts: Cargar más mensajes
+  Empty Posts: Tus canales suscritos no tienen actualmente ninguna entrada.
 Trending:
   Trending: 'Tendencias'
   Default: Predeterminado
@@ -149,6 +155,7 @@ Settings:
       Middle: 'Mitad'
       End: 'Final'
       Hidden: Oculto
+      Blur: Difuminar
     'Invidious Instance (Default is https://invidious.snopyta.org)': 'Instancia de
       Invidious (por defecto es https://invidious.snopyta.org)'
     Region for Trending: 'Región de las tendencias'
@@ -413,7 +420,7 @@ Settings:
     Hide Chapters: Ocultar los capítulos
     Hide Upcoming Premieres: Ocultar los próximos estrenos
     Hide Channels: Ocultar los vídeos de los canales
-    Hide Channels Placeholder: Nombre o ID del canal
+    Hide Channels Placeholder: ID del canal
     Display Titles Without Excessive Capitalisation: Mostrar títulos sin demasiadas
       mayúsculas
     Hide Featured Channels: Ocultar los canales recomendados
@@ -433,6 +440,13 @@ Settings:
     Hide Subscriptions Live: Ocultar las suscripciones de los directos
     Hide Profile Pictures in Comments: Ocultar las fotos del perfil en los comentarios
     Blur Thumbnails: Difuminar las miniaturas
+    Hide Subscriptions Community: Ocultar las suscripciones a la comunidad
+    Hide Channels Invalid: El ID del canal proporcionado no es válido
+    Hide Channels Disabled Message: Algunos canales se bloquearon por ID y no se procesaron.
+      La función está bloqueada mientras se actualizan esos ID
+    Hide Channels Already Exists: El ID del canal ya existe
+    Hide Channels API Error: Error al recuperar el usuario con el ID proporcionado.
+      Por favor, compruebe de nuevo si el ID es correcto.
   The app needs to restart for changes to take effect. Restart and apply change?: ¿Quieres
     reiniciar FreeTube ahora para aplicar los cambios?
   Proxy Settings:
@@ -607,8 +621,6 @@ Profile:
   Profile Settings: Ajustes del perfil
   Toggle Profile List: Alternar la lista de los perfiles
 Channel:
-  Subscriber: 'Suscriptor'
-  Subscribers: 'Suscriptores'
   Subscribe: 'Suscribirse'
   Unsubscribe: 'Anular suscripción'
   Search Channel: 'Buscar en canal'
@@ -653,7 +665,6 @@ Channel:
   Community:
     This channel currently does not have any posts: Este canal no tiene actualmente
       ningún mensaje
-    Community: Comunidad
     Reveal Answers: Revelar las respuestas
     Hide Answers: Ocultar las respuestas
     votes: '{votes} votos'
@@ -684,10 +695,7 @@ Video:
     YouTube'
   Open in Invidious: 'Abrir en Invidious'
   Copy Invidious Link: 'Copiar el enlace de Invidious'
-  View: 'Ver'
   Views: 'Vistas'
-  # Context is "X People Watching"
-  Watching: 'Viendo'
   Watched: 'Visto'
   Autoplay: 'Reproducción automática'
   # As in a Live Video
@@ -894,6 +902,7 @@ Comments:
   Member: Miembro
   Hearted: Corazón
   View {replyCount} replies: Ver {replyCount} respuestas
+  Subscribed: Suscrito
 Up Next: 'A continuación'
 
 # Toast Messages
@@ -993,10 +1002,10 @@ Tooltips:
       una caché para la imagen en la memoria personalizada. Esto aumentará el uso
       de la memoria RAM.
   Distraction Free Settings:
-    Hide Channels: Ingresa un nombre del canal o un ID del canal para ocultar todos
-      los videos, listas de reproducción y el propio canal para que no aparezcan en
-      la búsqueda, tendencias, más populares y recomendados. El nombre del canal ingresado
-      debe ser una coincidencia completa y distinguir entre mayúsculas y minúsculas.
+    Hide Channels: Introduzca un ID del canal para ocultar todos los vídeos, listas
+      de reproducción y el propio canal para que no aparezcan en las búsquedas, tendencias,
+      más populares y recomendados. El ID del canal introducido debe coincidir completamente
+      y se debe distinguir entre mayúsculas y minúsculas.
     Hide Subscriptions Live: Esta configuración se reemplaza por la configuración
       «{appWideSetting}» de toda la aplicación, en la sección «{subsection}» de «{settingsSection}»
   SponsorBlock Settings:

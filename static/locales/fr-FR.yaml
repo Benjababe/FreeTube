@@ -34,8 +34,15 @@ Global:
   Videos: 'Vidéos'
   Shorts: Shorts
   Live: En direct
+  Community: Communauté
 
 # Search Bar
+  Counts:
+    Video Count: 1 vidéo | {count} vidéos
+    Channel Count: 1 chaîne | {count} chaînes
+    View Count: 1 vue | {count} vues
+    Subscriber Count: 1 abonné | {count} abonnés
+    Watching Count: 1 spectateur | {count} spectateurs
 Search / Go to URL: 'Rechercher / ouvrir l''URL'
   # In Filter Button
 Search Filters:
@@ -98,6 +105,8 @@ Subscriptions:
   All Subscription Tabs Hidden: Tous les onglets d'abonnement sont cachés. Pour voir
     le contenu ici, veuillez désactiver certains onglets dans la section « {subsection} »
     dans « {settingsSection} ».
+  Load More Posts: Charger plus de billets
+  Empty Posts: Les chaînes abonnées ne contiennent actuellement aucun billet.
 Trending:
   Trending: 'Tendance'
   Trending Tabs: Onglets des Tendances
@@ -151,7 +160,8 @@ Settings:
       Beginning: 'Début'
       Middle: 'Milieu'
       End: 'Fin'
-      Hidden: Caché
+      Hidden: Masqué
+      Blur: Flou
     'Invidious Instance (Default is https://invidious.snopyta.org)': 'Instance Individious
       (https://invidious.snopyta.org par défaut)'
     Region for Trending: 'Pays pour les tendances'
@@ -187,8 +197,8 @@ Settings:
       Dracula: 'Dracula'
       System Default: Paramètres système
       Catppuccin Mocha: Catppuccin Moka
-      Pastel Pink: Rose Pastel
-      Hot Pink: Rose Vif
+      Pastel Pink: Rose pastel
+      Hot Pink: Rose vif
     Main Color Theme:
       Main Color Theme: 'Couleur principale du thème'
       Red: 'Rouge'
@@ -429,7 +439,7 @@ Settings:
     Hide Chapters: Masquer les chapitres
     Hide Upcoming Premieres: Cacher les avant-premières à venir
     Hide Channels: Masquer les vidéos des chaînes
-    Hide Channels Placeholder: Nom ou identifiant de la chaîne
+    Hide Channels Placeholder: Identifiant de la chaîne
     Display Titles Without Excessive Capitalisation: Afficher les titres sans majuscules
       excessives
     Hide Channel Playlists: Masquer les listes de lecture des chaînes
@@ -448,7 +458,15 @@ Settings:
     Hide Subscriptions Shorts: Masquer les shorts des abonnements
     Hide Subscriptions Live: Masquer les diffusions en direct des abonnements
     Blur Thumbnails: Flouter les miniatures
-    Hide Profile Pictures in Comments: Cacher les photos de profil dans les commentaires
+    Hide Profile Pictures in Comments: Masquer les photos de profil dans les commentaires
+    Hide Subscriptions Community: Masquer les communautés abonnées
+    Hide Channels Invalid: L'identifiant de la chaîne fourni n'est pas valide
+    Hide Channels Disabled Message: Certaines chaînes ont été bloquées à l'aide d'un
+      identifiant et n'ont pas été traitées. La fonctionnalité est bloquée tant que
+      ces identifiants sont mis à jour
+    Hide Channels Already Exists: L'identifiant de la chaîne existe déjà
+    Hide Channels API Error: Erreur de récupération de l'utilisateur portant l'identifiant
+      fourni. Veuillez vérifier à nouveau si l'ID est correct.
   The app needs to restart for changes to take effect. Restart and apply change?: L'application
     doit être redémarrée pour que les changements prennent effet. Redémarrer et appliquer
     les changements ?
@@ -593,8 +611,6 @@ About:
   Downloads / Changelog: Téléchargements / Journal des modifications
   Discussions: Discussions
 Channel:
-  Subscriber: 'Abonnement'
-  Subscribers: 'Abonnés'
   Subscribe: 'S''abonner'
   Unsubscribe: 'Se désabonner'
   Search Channel: 'Chercher une chaîne'
@@ -638,7 +654,6 @@ Channel:
     chaîne est limitée par l'âge et ne peut actuellement pas être visionnée dans FreeTube.
   Channel Tabs: Onglets des chaînes
   Community:
-    Community: Communauté
     This channel currently does not have any posts: Cette chaîne n'a actuellement
       aucune publication
     votes: '{votes} votes'
@@ -670,10 +685,7 @@ Video:
   Copy YouTube Embedded Player Link: 'Copier le lien YouTube-NoCookie'
   Open in Invidious: 'Ouvrir sur Individious'
   Copy Invidious Link: 'Copier le lien Individious'
-  View: 'Vue'
   Views: 'Vues'
-  # Context is "X People Watching"
-  Watching: 'En cours de lecture'
   Watched: 'Vu'
   # As in a Live Video
   Live: 'En direct'
@@ -883,6 +895,7 @@ Comments:
   Member: Membre
   Hearted: Aimé
   View {replyCount} replies: Voir les {replyCount} réponses
+  Subscribed: Abonné(e)
 Up Next: 'À suivre'
 
 # Toast Messages
@@ -1032,11 +1045,10 @@ Tooltips:
       un cache d'image personnalisé en mémoire. Ceci entraînera une augmentation de
       l'utilisation de la mémoire vive.
   Distraction Free Settings:
-    Hide Channels: Entrez un nom de chaîne ou un identifiant de chaîne pour empêcher
-      toutes les vidéos, les listes de lecture et la chaîne elle-même d'apparaître
-      dans les recherches, dans les catégories Tendances, Plus populaires et Recommandés.
-      Le nom de la chaîne entré doit correspondre exactement et est sensible à la
-      casse.
+    Hide Channels: Entrez un identifiant de chaîne pour empêcher toutes les vidéos,
+      les listes de lecture et la chaîne elle-même d'apparaître dans les recherches,
+      dans les catégories Tendances, Plus populaires et Recommandés. L'identifiant
+      de la chaîne entré doit correspondre exactement et est sensible aux majuscules.
     Hide Subscriptions Live: Ce paramètre est remplacé par le paramètre « {appWideSetting} »
       applicable à l'ensemble de l'application, dans la section « {subsection} » de
       la section « {settingsSection} »

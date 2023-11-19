@@ -8,6 +8,7 @@ import FtFlexBox from '../ft-flex-box/ft-flex-box.vue'
 import FtButton from '../ft-button/ft-button.vue'
 
 import debounce from 'lodash.debounce'
+import allLocales from '../../../../static/locales/activeLocales.json'
 import { showToast } from '../../helpers/utils'
 
 export default defineComponent({
@@ -49,7 +50,8 @@ export default defineComponent({
         'start',
         'middle',
         'end',
-        'hidden'
+        'hidden',
+        'blur'
       ],
       externalLinkHandlingValues: [
         '',
@@ -67,6 +69,9 @@ export default defineComponent({
     },
     backendFallback: function () {
       return this.$store.getters.getBackendFallback
+    },
+    blurThumbnails: function () {
+      return this.$store.getters.getBlurThumbnails
     },
     checkForUpdates: function () {
       return this.$store.getters.getCheckForUpdates
@@ -87,7 +92,7 @@ export default defineComponent({
       return this.$store.getters.getListType
     },
     thumbnailPreference: function () {
-      return this.$store.getters.getThumbnailPreference
+      return this.blurThumbnails ? 'blur' : this.$store.getters.getThumbnailPreference
     },
     currentLocale: function () {
       return this.$store.getters.getCurrentLocale
@@ -108,7 +113,7 @@ export default defineComponent({
     localeOptions: function () {
       return [
         'system',
-        ...this.$i18n.allLocales
+        ...allLocales
       ]
     },
 
@@ -139,7 +144,8 @@ export default defineComponent({
         this.$t('Settings.General Settings.Thumbnail Preference.Beginning'),
         this.$t('Settings.General Settings.Thumbnail Preference.Middle'),
         this.$t('Settings.General Settings.Thumbnail Preference.End'),
-        this.$t('Settings.General Settings.Thumbnail Preference.Hidden')
+        this.$t('Settings.General Settings.Thumbnail Preference.Hidden'),
+        this.$t('Settings.General Settings.Thumbnail Preference.Blur')
       ]
     },
 
@@ -202,6 +208,11 @@ export default defineComponent({
       }
     },
 
+    handleThumbnailPreferenceChange: function (value) {
+      this.updateBlurThumbnails(value === 'blur')
+      this.updateThumbnailPreference(value)
+    },
+
     ...mapMutations([
       'setCurrentInvidiousInstance'
     ]),
@@ -209,6 +220,7 @@ export default defineComponent({
     ...mapActions([
       'updateEnableSearchSuggestions',
       'updateBackendFallback',
+      'updateBlurThumbnails',
       'updateCheckForUpdates',
       'updateCheckForBlogPosts',
       'updateBarColor',

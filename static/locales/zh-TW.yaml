@@ -33,8 +33,15 @@ Global:
   Videos: '影片'
   Shorts: 短片
   Live: 直播
+  Community: 社群
 
 # Search Bar
+  Counts:
+    Video Count: 1 部影片 | {count} 部影片
+    Channel Count: 1 個頻道 | {count} 個頻道
+    Subscriber Count: 1 個訂閱者 | {count} 個訂閱者
+    View Count: 1 次檢視 | {count} 次檢視
+    Watching Count: 1 個正在觀看 | {count} 個正在觀看
 Search / Go to URL: '搜尋/ 前往網址'
   # In Filter Button
 Search Filters:
@@ -88,6 +95,8 @@ Subscriptions:
   Empty Channels: 您訂閱的頻道目前沒有任何影片。
   Subscriptions Tabs: 訂閱分頁
   All Subscription Tabs Hidden: 所有訂閱分頁均已隱藏。要檢視此處的內容，請取消隱藏「{settingsSection}」中「{subsection}」區塊中的一些分頁。
+  Load More Posts: 載入更多影片
+  Empty Posts: 您訂閱的頻道目前沒有任何影片。
 Trending:
   Trending: '發燒影片'
   Trending Tabs: 熱門分頁
@@ -134,6 +143,7 @@ Settings:
       Middle: '中間'
       End: '結尾'
       Hidden: 隱藏
+      Blur: 模糊
     'Invidious Instance (Default is https://invidious.snopyta.org)': 'Invidious實例(預設為
       https://invidious.snopyta.org )'
     Region for Trending: '發燒影片區域'
@@ -375,7 +385,7 @@ Settings:
     Hide Sharing Actions: 隱藏分享動作
     Hide Chapters: 隱藏章節
     Hide Upcoming Premieres: 隱藏即將到來的首映
-    Hide Channels Placeholder: 頻道名稱或 ID
+    Hide Channels Placeholder: 頻道 ID
     Hide Channels: 隱藏頻道中的影片
     Display Titles Without Excessive Capitalisation: 顯示沒有過多大寫的標題
     Hide Featured Channels: 隱藏精選頻道
@@ -395,6 +405,11 @@ Settings:
     Hide Subscriptions Live: 隱藏訂閱直播
     Hide Profile Pictures in Comments: 在留言中隱藏個人檔案圖片
     Blur Thumbnails: 模糊縮圖
+    Hide Subscriptions Community: 隱藏訂閱社群
+    Hide Channels Invalid: 提供的頻道 ID 無效
+    Hide Channels Disabled Message: 某些頻道被使用 ID 封鎖且無法處理。當這些 ID 更新時，功能將會被封鎖
+    Hide Channels Already Exists: 頻道 ID 已存在
+    Hide Channels API Error: 使用提供的 ID 擷取使用者時發生錯誤。請再次檢查 ID 是否正確。
   The app needs to restart for changes to take effect. Restart and apply change?: 此變更需要重啟讓修改生效。重啟並且套用變更?
   Proxy Settings:
     Error getting network information. Is your proxy configured properly?: 取得網路資訊時發生錯誤。您的代理伺服器設定正確嗎？
@@ -559,7 +574,6 @@ Channel:
   This channel does not exist: 此頻道不存在
   This channel does not allow searching: 此頻道不允許搜尋
   Community:
-    Community: 社群
     This channel currently does not have any posts: 此頻道目前沒有任何貼文
     votes: '{votes} 票'
     Reveal Answers: 揭露答案
@@ -582,10 +596,7 @@ Video:
   Copy YouTube Embedded Player Link: '複製YouTube內嵌播放器連結'
   Open in Invidious: '在Invidious中開啟'
   Copy Invidious Link: '複製Invidious連結'
-  View: '觀看'
   Views: '觀看'
-  # Context is "X People Watching"
-  Watching: '觀看中'
   Watched: '已觀看'
   # As in a Live Video
   Live: '直播'
@@ -780,6 +791,7 @@ Comments:
   Member: 成員
   View {replyCount} replies: 檢視 {replyCount} 則回覆
   Hearted: 喜歡的
+  Subscribed: 已訂閱
 Up Next: '觀看其他類似影片'
 
 # Toast Messages
@@ -881,7 +893,7 @@ Tooltips:
   Experimental Settings:
     Replace HTTP Cache: 停用 Electron 以磁碟為基礎的 HTTP 快取並啟用自訂的記憶體圖片快取。會導致記憶體使用量增加。
   Distraction Free Settings:
-    Hide Channels: 輸入頻道名稱或頻道 ID 以隱藏所有影片、播放清單與頻道本身，使其完全不出現在搜尋、趨勢、熱門與建議中。輸入的頻道名稱必須完全符合，且區分大小寫。
+    Hide Channels: 輸入頻道 ID 以隱藏所有影片、播放清單與頻道本身，使其完全不出現在搜尋、趨勢、熱門與建議中。輸入的頻道 ID 必須完全符合，且區分大小寫。
     Hide Subscriptions Live: 此設定會被「{settingsSection}」的「{subsection}」部分中應用程式範圍的「{appWideSetting}」設定覆寫
   SponsorBlock Settings:
     UseDeArrowTitles: 將影片標題取代為 DeArrow 使用者遞交的標題。

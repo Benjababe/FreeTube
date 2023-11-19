@@ -19,6 +19,7 @@ import {
 
 const state = {
   isSideNavOpen: false,
+  outlinesHidden: true,
   sessionSearchHistory: [],
   popularCache: null,
   trendingCache: {
@@ -49,6 +50,10 @@ const state = {
 const getters = {
   getIsSideNavOpen () {
     return state.isSideNavOpen
+  },
+
+  getOutlinesHidden() {
+    return state.outlinesHidden
   },
 
   getCurrentVolume () {
@@ -117,6 +122,14 @@ const getters = {
 }
 
 const actions = {
+  showOutlines({ commit }) {
+    commit('setOutlinesHidden', false)
+  },
+
+  hideOutlines({ commit }) {
+    commit('setOutlinesHidden', true)
+  },
+
   async downloadMedia({ rootState }, { url, title, extension, fallingBackPath }) {
     if (!process.env.IS_ELECTRON) {
       openExternalLink(url)
@@ -125,9 +138,10 @@ const actions = {
 
     const fileName = `${replaceFilenameForbiddenChars(title)}.${extension}`
     const errorMessage = i18n.t('Downloading failed', { videoTitle: title })
+    const askFolderPath = rootState.settings.downloadAskPath
     let folderPath = rootState.settings.downloadFolderPath
 
-    if (folderPath === '') {
+    if (askFolderPath) {
       const options = {
         defaultPath: fileName,
         filters: [
@@ -501,6 +515,10 @@ const actions = {
     const externalPlayerMap = JSON.parse(fileData).map((entry) => {
       return { name: entry.name, nameTranslationKey: entry.nameTranslationKey, value: entry.value, cmdArguments: entry.cmdArguments }
     })
+    // Sort external players alphabetically & case-insensitive, keep default entry at the top
+    const playerNone = externalPlayerMap.shift()
+    externalPlayerMap.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
+    externalPlayerMap.unshift(playerNone)
 
     const externalPlayerNames = externalPlayerMap.map((entry) => { return entry.name })
     const externalPlayerNameTranslationKeys = externalPlayerMap.map((entry) => { return entry.nameTranslationKey })
@@ -626,6 +644,10 @@ const actions = {
 const mutations = {
   toggleSideNav (state) {
     state.isSideNavOpen = !state.isSideNavOpen
+  },
+
+  setOutlinesHidden(state, value) {
+    state.outlinesHidden = value
   },
 
   setShowProgressBar (state, value) {

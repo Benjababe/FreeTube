@@ -35,10 +35,14 @@ Global:
   Videos: 'Відео'
   Shorts: Shorts
   Live: Наживо
+  Community: Спільнота
 
   Counts:
     Video Count: 1 відео | {count} відео
     Channel Count: 1 канал | {count} канал
+    Subscriber Count: 1 підписник | {count} підписників
+    View Count: 1 перегляд | {count} переглядів
+    Watching Count: 1 глядач | {count} глядачів
 Version {versionNumber} is now available!  Click for more details: 'Доступна нова
   версія {versionNumber}!  Натисніть, щоб переглянути подробиці'
 Download From Site: 'Завантажити з сайту'
@@ -102,6 +106,8 @@ Subscriptions:
   Subscriptions Tabs: Вкладки підписок
   All Subscription Tabs Hidden: Усі вкладки підписки сховані. Щоб побачити вміст,
     будь ласка, відкрийте деякі вкладки в розділі "{subsection}" в "{settingsSection}".
+  Load More Posts: Завантажити ще дописи
+  Empty Posts: На каналах, на які ви підписані, наразі немає дописів.
 Trending:
   Trending: 'Популярне'
   Trending Tabs: Популярні вкладки
@@ -154,11 +160,12 @@ Settings:
       List: 'Список'
     Thumbnail Preference:
       Thumbnail Preference: 'Налаштування мініатюр'
-      Default: 'За замовчуванням'
+      Default: 'Типово'
       Beginning: 'На початку'
-      Middle: 'В середині'
+      Middle: 'У середині'
       End: 'У кінці'
       Hidden: Сховано
+      Blur: Розмиття
     'Invidious Instance (Default is https://invidious.snopyta.org)': 'Екземпляр Invidious
       (За замовчуванням https://invidious.snopyta.org)'
     Region for Trending: 'Регіон для Популярних'
@@ -341,7 +348,7 @@ Settings:
     Hide Chapters: Сховати розділи
     Hide Upcoming Premieres: Сховати майбутні прем'єри
     Hide Channels: Сховати відео з каналів
-    Hide Channels Placeholder: Назва або ID каналу
+    Hide Channels Placeholder: ID каналу
     Display Titles Without Excessive Capitalisation: Показувати заголовки без надмірно
       великих літер
     Hide Featured Channels: Сховати пропоновані канали
@@ -361,6 +368,7 @@ Settings:
     Hide Subscriptions Live: Сховати трансляції з підписок
     Hide Profile Pictures in Comments: Сховати зображення профілю в коментарях
     Blur Thumbnails: Розмиті мініатюри
+    Hide Subscriptions Community: Сховати спільноту підписників
   Data Settings:
     Data Settings: 'Налаштування даних'
     Select Import Type: 'Оберіть тип імпорту'
@@ -590,7 +598,6 @@ Channel:
     канал має вікові обмеження і наразі не може бути переглянутий на FreeTube.
   Channel Tabs: Вкладки каналів
   Community:
-    Community: Спільнота
     This channel currently does not have any posts: Зараз на цьому каналі немає публікацій
     votes: 'Голосів: {votes}'
     Reveal Answers: Розгорнути відповіді
@@ -624,15 +631,12 @@ Video:
   Copy YouTube Channel Link: 'Копіювати посилання на канал YouTube'
   Open Channel in Invidious: 'Відкрити канал у Invidious'
   Copy Invidious Channel Link: 'Копіювати посилання на канал Invidious'
-  View: 'Перегляд'
   Views: 'Перегляди'
   Loop Playlist: 'Зациклити добірку'
   Shuffle Playlist: 'Перемішати добірку'
   Reverse Playlist: 'Змінити напрямок добірки'
   Play Next Video: 'Відтворити наступне відео'
   Play Previous Video: 'Відтворити попереднє відео'
-  # Context is "X People Watching"
-  Watching: 'Переглядає'
   Watched: 'Переглянуто'
   Autoplay: 'Автовідтворення'
   Starting soon, please refresh the page to check again: 'Початок незабаром, оновіть
@@ -829,6 +833,7 @@ Comments:
   Member: Учасник
   Hearted: З сердечком
   View {replyCount} replies: Переглянути {replyCount} відповідей
+  Subscribed: Слідкують
 Up Next: 'Далі вгору'
 
 #Tooltips
