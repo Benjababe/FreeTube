@@ -692,6 +692,7 @@ export default defineComponent({
 
           this.channelId = result.authorId
           this.channelName = result.author
+          this.channelVerified = result.authorVerified
           const channelThumb = result.authorThumbnails[1]
           this.channelThumbnail = channelThumb ? youtubeImageUrlToInvidious(channelThumb.url, this.currentInvidiousInstance) : ''
           this.updateSubscriptionDetails({
